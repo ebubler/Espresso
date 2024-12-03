@@ -2,6 +2,8 @@ import sys
 from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
 from PyQt6.uic import loadUi
 import sqlite3
+sys.path.append('UI')
+
 from addEditCoffeeForm import Ui_AddEdit
 from UI_main import Ui_MainWindow
 
@@ -11,7 +13,7 @@ class AddEditCoffeeForm(QMainWindow, Ui_AddEdit):
         super().__init__(parent)
         self.setupUi(self)
 
-        self.database2 = sqlite3.connect('coffee.db')
+        self.database2 = sqlite3.connect('data/coffee.db')
 
         self.record_id = record_id
         self.saveButton.clicked.connect(self.save_record)
@@ -62,7 +64,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
 
-        self.database = sqlite3.connect('coffee.db')
+        self.database = sqlite3.connect('data/coffee.db')
 
         self.addButton.clicked.connect(self.add_record)
         self.editButton.clicked.connect(self.edit_record)
